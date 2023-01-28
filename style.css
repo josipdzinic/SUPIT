@@ -140,3 +140,25 @@ footer
   padding-left: 350px;
   padding-right: 350px;
 }
+
+div div
+{
+  display: flex;
+  justify-content: center;
+}
+
+div div img
+{
+  height: 80px;
+}
+
+#kakodonas
+{
+  padding-left: 300px;
+  padding-right: 300px;
+}
+
+#kakodonasbg
+{
+  background-image: url(img/kakoDoNas.jpg);
+}
