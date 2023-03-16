@@ -141,15 +141,22 @@ footer
   padding-right: 350px;
 }
 
-div div
+#sponsorimg
 {
   display: flex;
   justify-content: center;
 }
 
+
 div div img
 {
   height: 80px;
+}
+
+#sponsor
+{
+  width: 80%;
+  margin: auto;
 }
 
 #kakodonas
