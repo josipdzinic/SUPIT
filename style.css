@@ -169,3 +169,23 @@ div div img
 {
   background-image: url(img/kakoDoNas.jpg);
 }
+
+#rowonama
+{
+  padding: 20px;
+}
+
+#rowonama>div>div
+{
+  text-align: justify;
+  height: 400px;
+  padding: 15px;
+}
+
+#rowonama>div>div>hr
+{
+  width: 100%;
+  border-top: 1px solid gray;
+
+}
+
