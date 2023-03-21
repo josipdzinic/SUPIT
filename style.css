@@ -139,35 +139,54 @@ footer
 {
   padding-left: 350px;
   padding-right: 350px;
+  font-family: 'Great Vibes';
+  font: bold;
+  font-size: 20px;
 }
 
 #sponsorimg
 {
   display: flex;
   justify-content: center;
+  padding: 10px;
+  padding-bottom: 50px;
 }
 
 
 div div img
 {
-  height: 80px;
+  height: 60px;
 }
 
 #sponsor
 {
-  width: 80%;
+  width: 90%;
   margin: auto;
+  padding: 50px;
 }
 
 #kakodonas
 {
+  
   padding-left: 300px;
   padding-right: 300px;
+  
 }
+
+
+#kakodonas>div>div>p
+{
+  padding: 0 auto;
+  padding-top: 20px;
+  padding-left: 60px;
+  
+}
+
 
 #kakodonasbg
 {
   background-image: url(img/kakoDoNas.jpg);
+  padding: 50px;
 }
 
 #rowonama
@@ -189,3 +208,11 @@ div div img
 
 }
 
+#sponsor>div>div>hr
+{
+  width: 70%;
+  border-top: 1px solid grey;
+  margin-left: auto;
+  margin-right: auto;
+  opacity: 100%;
+}
