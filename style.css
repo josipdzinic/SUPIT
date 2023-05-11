@@ -4,6 +4,10 @@ nav {
   padding: 0 10px;
 }
 
+body{
+  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+
 nav ul {
   display: flex;
   flex-direction: row;
