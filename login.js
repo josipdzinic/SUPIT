@@ -6,38 +6,34 @@ $(document).ready(function () {
   $('#login-button').on('click', function () {
     var loginUsernameEntry = $("#login-email").val();
     var loginPasswordEntry = $("#login-password").val();
-    if (loginUsernameEntry && loginPasswordEntry == account[1]) {
-      console.log("Current Username " + account[0]);
-      console.log("Current Password " + account[1]);
+    console.log("Current Username " + account[0]);
+    console.log("Current Password " + account[1]);
 
-      const body = {
-        username: account[0],
-        password: account[1]
-      };
-
-      $.ajax({  
-        type: "POST",
-        url: "https://www.fulek.com/data/api/user/login",
-        data: JSON.stringify(body),
-        contentType: "application/json",
-        success: function (data) {
-          const tokenObj = data.token; // Extract the token object from the response
-          const tokenString = JSON.stringify(tokenObj);
-          localStorage.setItem("token",data.data.token)
-          localStorage.setItem("Username",data.data.username)
-        }
-      });
-
-      console.log("Logged In");
-          setTimeout(() => {
-        window.location.replace("index.html");
-      }, 3000);
-
-    } else {
-      console.log("Attempted Username " + loginUsernameEntry);
-      console.log("Attempted Password " + loginPasswordEntry);
-      console.log("Login Falied");
+    const body = {
+      username: account[0],
+      password: account[1]
     };
+
+    $.ajax({
+      type: "POST",
+      url: "https://www.fulek.com/data/api/user/login",
+      data: JSON.stringify(body),
+      contentType: "application/json",
+      success: function (data) {
+        const tokenObj = data.token; // Extract the token object from the response
+        const tokenString = JSON.stringify(tokenObj);
+        localStorage.setItem("token", data.data.token)
+        localStorage.setItem("Username", data.data.username)
+        console.log("Logged In");
+        setTimeout(() => {
+          window.location.replace("index.html");
+        }, 3000);
+
+      }
+    });
+
+
+
   });
 
   $('#create-button').on('click', function () {
