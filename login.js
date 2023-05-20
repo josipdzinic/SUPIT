@@ -27,7 +27,7 @@ $(document).ready(function () {
         console.log("Logged In");
         setTimeout(() => {
           window.location.replace("index.html");
-        }, 3000);
+        }, 1000);
 
       }
     });
