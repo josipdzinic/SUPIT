@@ -37,7 +37,7 @@
             </li>
             <li id="nastavniplan"><a href="novosti.html"><i class="fa-sharp fa-solid fa-circle-info" id="navIconOrange"></i>Nastavni plan</a>
             </li>
-            <li><a href="#"><i class="fa-sharp fa-solid fa-envelope" id="navIconOrange"></i> Kontakt</a></li>
+            <li id="contact"><a href="#" onclick ="contact(); return false;"><i class="fa-sharp fa-solid fa-envelope" id="navIconOrange"></i> Kontakt</a></li>
 
 
         </ul>
@@ -57,6 +57,21 @@
 
     </div>
     </div>
+
+    <div id="contactForm">
+
+        <h1>Keep in touch!</h1>
+        <small>I'll get back to you as quickly as possible</small>
+        
+        <form action="#">
+          <input placeholder="Name" type="text" required />
+          <input placeholder="Email" type="email" required />
+          <input placeholder="Subject" type="text" required />
+          <textarea placeholder="Comment"></textarea>
+          <input class="formBtn" type="submit" />
+          <input class="formBtn" type="reset" />
+        </form>
+      </div>
 
     <script src="tipkanje.js"></script>
     <script src="auth.js"></script>
