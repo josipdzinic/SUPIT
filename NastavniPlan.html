@@ -4,6 +4,21 @@
 <head>
     <title>GET Request Example</title>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <style>
+        table {
+            border-collapse: collapse;
+            width: 100%;
+        }
+
+        th,
+        td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: left;
+        }
+    </style>
     <script>
         $(document).ready(function () {
             var token = localStorage.getItem("token");
@@ -22,25 +37,30 @@
                     // Retrieve the array from localStorage
                     const courses = JSON.parse(localStorage.getItem('courses'));
 
-                    // Get the select element
-                    const selectElement = document.getElementById('course');
-
-                    // Add options to the select element
-                    courses.forEach(course => {
-                        const option = document.createElement('option');
-                        option.value = course.id;
-                        option.textContent = course.kolegij;
-                        selectElement.appendChild(option);
+                    // Autocomplete text box
+                    $("#course").autocomplete({
+                        source: courses.map(course => course.kolegij),
+                        select: function (event, ui) {
+                            const selectedCourse = courses.find(course => course.kolegij === ui.item.value);
+                            addCourseToTable(selectedCourse);
+                            // Clear the text box after selection
+                            $(this).val('');
+                            return false;
+                        }
                     });
 
-                    // Listen for changes in the select element
-                    selectElement.addEventListener('change', function () {
-                        const selectedCourseId = this.value;
-                        const selectedCourse = courses.find(course => course.id == selectedCourseId);
-
-                        // Do something with the selected course
-                        console.log(selectedCourse);
-                    });
+                    // Add course to table
+                    function addCourseToTable(course) {
+                        const table = $("#courseTable");
+                        const row = $("<tr>");
+                        row.append($("<td>").text(course.id));
+                        row.append($("<td>").text(course.kolegij));
+                        row.append($("<td>").text(course.sati));
+                        row.append($("<td>").text(course.predavanja));
+                        row.append($("<td>").text(course.vjezbe));
+                        row.append($("<td>").text(course.tip));
+                        table.append(row);
+                    }
                 },
                 error: function (xhr, textStatus, errorThrown) {
                     // Handle the error
@@ -53,9 +73,23 @@
 
 <body>
     <label for="course">Select a course:</label>
-    <select id="course">
-        <option value="">-- Select a course --</option>
-    </select>
+    <input id="course" type="text" placeholder="Type course name">
+
+    <table id="courseTable">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Kolegij</th>
+                <th>Sati</th>
+                <th>Predavanja</th>
+                <th>Vjezbe</th>
+                <th>Tip</th>
+            </tr>
+        </thead>
+        <tbody>
+            <!-- Selected courses will be added here -->
+        </tbody>
+    </table>
 </body>
 
 </html>
