@@ -18,6 +18,18 @@
             padding: 8px;
             text-align: left;
         }
+
+        .delete-button {
+            background-color: #f44336;
+            color: white;
+            border: none;
+            padding: 5px 10px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            cursor: pointer;
+            border-radius: 4px;
+        }
     </style>
     <script>
         $(document).ready(function () {
@@ -59,6 +71,13 @@
                         row.append($("<td>").text(course.predavanja));
                         row.append($("<td>").text(course.vjezbe));
                         row.append($("<td>").text(course.tip));
+
+                        const deleteButton = $("<button>").text("Delete").addClass("delete-button");
+                        deleteButton.click(function () {
+                            $(this).closest("tr").remove();
+                        });
+                        row.append($("<td>").append(deleteButton));
+
                         table.append(row);
                     }
                 },
@@ -84,6 +103,7 @@
                 <th>Predavanja</th>
                 <th>Vjezbe</th>
                 <th>Tip</th>
+                <th></th>
             </tr>
         </thead>
         <tbody>
