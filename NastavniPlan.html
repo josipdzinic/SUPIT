@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>GET Request Example</title>
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script>
+    $(document).ready(function () {
+      var token = localStorage.getItem("token");
+
+      $.ajax({
+        type: "GET",
+        url: "https://www.fulek.com/data/api/supit/curriculum-list/hr",
+        headers: {
+          Authorization: "Bearer " + token
+        },
+        success: function (data) {
+          // Handle the response data
+          console.log(data);
+          localStorage.setItem("courses", JSON.stringify(data.data));
+
+          // Retrieve the array from localStorage
+          const courses = JSON.parse(localStorage.getItem('courses'));
+
+          // Get the select element
+          const selectElement = document.getElementById('course');
+
+          // Add options to the select element
+          courses.forEach(course => {
+            const option = document.createElement('option');
+            option.value = course.id;
+            option.textContent = course.kolegij;
+            selectElement.appendChild(option);
+          });
+
+          // Listen for changes in the select element
+          selectElement.addEventListener('change', function() {
+            const selectedCourseId = this.value;
+            const selectedCourse = courses.find(course => course.id == selectedCourseId);
+
+            // Do something with the selected course
+            console.log(selectedCourse);
+          });
+        },
+        error: function (xhr, textStatus, errorThrown) {
+          // Handle the error
+          console.log("Error:", errorThrown);
+        }
+      });
+    });
+  </script>
+</head>
+<body>
+    <label for="course">Select a course:</label>
+    <select id="course">
+      <option value="">-- Select a course --</option>
+    </select>
+</body>
+</html>
