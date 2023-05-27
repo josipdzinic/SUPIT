@@ -21,16 +21,26 @@
 <body>
   <nav>
     <ul>
-      <li><a href="login.html">Prijavi se <i class="fa-sharp fa-solid fa-arrow-right-to-bracket"
-            id="navIconBlue"></i></a>
-      </li>
-      <li><a href="index.html"><i class="fa-sharp fa-solid fa-house-chimney" id="navIconOrange"></i> Početna</a></li>
-      <li><a href="onama.html"><i class="fa-sharp fa-solid fa-comments" id="navIconOrange"></i> O nama</a></li>
-      <li><a href="novosti.html"><i class="fa-sharp fa-solid fa-circle-info" id="navIconOrange"></i> Novosti</a></li>
-      <li><a href="#"><i class="fa-sharp fa-solid fa-envelope" id="navIconOrange"></i> Kontakt</a></li>
+        <li id="prijava"><a href="login.html">Prijavi se <i class="fa-sharp fa-solid fa-arrow-right-to-bracket"
+                    id="navIconBlue"></i></a>
+        </li>
+        <li id="odjava"><a href="#" onclick="logout(); return false;">Odjavi se <i
+                    class="fa-sharp fa-solid fa-arrow-right-to-bracket" id="navIconBlue"></i></a>
+        </li>
+        <li><a href="index.html"><i class="fa-sharp fa-solid fa-house-chimney" id="navIconOrange"></i> Početna</a>
+        </li>
+        <li><a href="onama.html"><i class="fa-sharp fa-solid fa-comments" id="navIconOrange"></i> O nama</a></li>
+        <li><a href="novosti.html"><i class="fa-sharp fa-solid fa-circle-info" id="navIconOrange"></i> Novosti</a>
+        </li>
+        <li id="nastavniplan"><a href="NastavniPlan.html"><i class="fa-sharp fa-solid fa-circle-info"
+                    id="navIconOrange"></i>Nastavni plan</a>
+        </li>
+        <li id="contact"><a href="#" onclick="contact(); return false;"><i class="fa-sharp fa-solid fa-envelope"
+                    id="navIconOrange"></i> Kontakt</a></li>
+
 
     </ul>
-  </nav>
+</nav>
   <div id="center">Novosti</div>
   <hr>
 
@@ -49,6 +59,29 @@
       </div>
     </div>
   </div>
+  <div id="contactForm">
+
+    <h1>Keep in touch!</h1>
+    <small>I'll get back to you as quickly as possible</small>
+
+    <form action="https://www.fulek.com/mvc/supit/project-contact-form" method="post">
+        <input placeholder="Ime" name="FullName" type="text" required />
+        <input placeholder="Email" name="Email" type="email" required />
+        Vaznost poruke
+        <select name="Importance" id="Importance">
+            <option value="Niska">Niska vaznost</option>
+            <option value="Srednja">Srednja vaznost</option>
+            <option value="Visoka">Visoka vaznost</option>
+        </select>
+        <textarea name="Message" placeholder="Poruka"></textarea>
+        <input type="checkbox" id="ReciveNewsletter" name="ReceiveNewsletter" value="True">
+        <label for="ReciveNewsletter">Recive newsletter</label><br>
+        <input class="formBtn" type="submit" />
+        <input class="formBtn" type="reset" />
+    </form>
+</div>
+
+<script src="auth.js"></script>
   <footer><div id="footer1">
     BUDI IZVRSTAN U ONOM ŠTO VOLIŠ
   </div>
