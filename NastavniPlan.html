@@ -73,26 +73,23 @@
                     Authorization: "Bearer " + token
                 },
                 success: function (data) {
-                    // Handle the response data
+                   
                     console.log(data);
                     localStorage.setItem("courses", JSON.stringify(data.data));
 
-                    // Retrieve the array from localStorage
                     const courses = JSON.parse(localStorage.getItem('courses'));
 
-                    // Autocomplete text box
                     $("#course").autocomplete({
                         source: courses.map(course => course.kolegij),
                         select: function (event, ui) {
                             const selectedCourse = courses.find(course => course.kolegij === ui.item.value);
                             addCourseToTable(selectedCourse);
-                            // Clear the text box after selection
+
                             $(this).val('');
                             return false;
                         }
                     });
 
-                    // Add course to table
                     function addCourseToTable(course) {
                         const table = $("#courseTable");
                         const row = $("<tr>");
@@ -113,7 +110,6 @@
                     }
                 },
                 error: function (xhr, textStatus, errorThrown) {
-                    // Handle the error
                     console.log("Error:", errorThrown);
                 }
             });
@@ -161,7 +157,7 @@
             </tr>
         </thead>
         <tbody>
-            <!-- Selected courses will be added here -->
+
         </tbody>
     </table>
     <div id="contactForm">
